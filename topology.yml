@@ -119,6 +119,23 @@ topology_template:
             secure: false
             network_name: PRIVATE
             initiator: source
+    Bash_2:
+      type: otc.nodes.SoftwareComponent.Bash
+      properties:
+        component_version: 1.0
+      requirements:
+        - hostedOnComputeHost:
+            type_requirement: host
+            node: Compute
+            capability: otc.capabilities.Compute
+            relationship: tosca.relationships.HostedOn
+      capabilities:
+        data_endpoint:
+          properties:
+            protocol: tcp
+            secure: false
+            network_name: PRIVATE
+            initiator: source
   outputs:
     Compute_private_address:
       value: { get_attribute: [ Compute, private_address ] }
